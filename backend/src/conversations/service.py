@@ -49,12 +49,9 @@ class ConversationService:
         if conversation_data.title:
             conversation.title = conversation_data.title
 
-        # Commit changes to the database
         session.add(conversation)
         await session.commit()
-        await session.refresh(
-            conversation
-        )  # Refresh to get the latest state from the DB
+        await session.refresh(conversation)
 
         return conversation
 

@@ -117,7 +117,11 @@ const ChatbotsActive = () => {
             onChange={(e) => setSearchText(e.target.value)}
             style={{ width: 200 }}
           />
-          <Button type="default" onClick={handleRefresh}>
+          <Button
+            type="default"
+            className="button-refresh"
+            onClick={handleRefresh}
+          >
             Refresh
           </Button>
         </Space>

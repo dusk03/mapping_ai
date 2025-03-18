@@ -71,7 +71,6 @@ async def stream_ai_response(
                 return
 
         if full_response:
-            # Lưu tin nhắn AI vào database sau khi hoàn thành response
             await messages_service.create_message(
                 message_data=MessageCreate(role="assistant", content=full_response),
                 conversation=conversation,

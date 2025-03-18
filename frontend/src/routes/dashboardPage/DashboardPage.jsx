@@ -4,6 +4,7 @@ import ChatInput from "../../components/chatInput/ChatInput";
 import "./dashboardPage.css";
 import ChatBotSelector from "../../components/chatBotSelector/ChatBotSelector";
 import DocumentManager from "../../components/documentManager/DocumentManager";
+import { createConversation } from "../../services/chat/conversationService";
 
 const DashboardPage = () => {
   const navigate = useNavigate();
@@ -19,29 +20,12 @@ const DashboardPage = () => {
       return;
     }
 
-    const token = localStorage.getItem("access_token");
-
-    if (!token) {
-      console.error("Token not found!");
-      return;
-    }
-
-    setIsLoading(true);
     try {
-      const response = await fetch("/api/v1/conversation/user/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          chatbot_uid: selectedChatbot,
-          title: newMessage,
-        }),
+      setIsLoading(true);
+      const data = await createConversation({
+        chatbot_uid: selectedChatbot,
+        title: newMessage,
       });
-
-      const data = await response.json();
-
       if (data.uid) {
         navigate(`/chats/${data.uid}`, {
           state: { initialMessage: newMessage },

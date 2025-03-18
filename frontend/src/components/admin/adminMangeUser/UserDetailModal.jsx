@@ -2,6 +2,12 @@ import React, { useEffect, useState, useCallback } from "react";
 import { Modal, Table, Spin, message, Switch, Input } from "antd";
 import { CaretUpOutlined, CaretDownOutlined } from "@ant-design/icons";
 
+import {
+  getChatbotsByUser,
+  enableChatbotPermission,
+  disableChatbotPermission,
+} from "../../../services/admin/adminService";
+
 const UserDetailModal = ({ visible, onClose, user }) => {
   const [chatbots, setChatbots] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -16,17 +22,9 @@ const UserDetailModal = ({ visible, onClose, user }) => {
   }, [visible, user]);
 
   const fetchChatbots = async (userUid) => {
-    if (!accessToken) {
-      message.error("No access token found");
-      return;
-    }
     setLoading(true);
     try {
-      const response = await fetch(`/api/v1/admin/chatbots/${userUid}`, {
-        headers: { Authorization: `Bearer ${accessToken}` },
-      });
-      if (!response.ok) throw new Error("Failed to fetch chatbots");
-      const data = await response.json();
+      const data = await getChatbotsByUser(userUid);
       setChatbots(data);
     } catch (error) {
       message.error("Error fetching chatbots");
@@ -43,29 +41,10 @@ const UserDetailModal = ({ visible, onClose, user }) => {
         let updatedPermissionUid = null;
 
         if (newStatus === "able") {
-          const response = await fetch("/api/v1/admin/permissions", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${accessToken}`,
-            },
-            body: JSON.stringify({
-              user_uid: user.uid,
-              chatbot_uid: record.uid,
-            }),
-          });
-
-          if (!response.ok) {
-            throw new Error("Failed to enable chatbot");
-          }
-
-          const responseData = await response.json();
-          updatedPermissionUid = responseData.uid;
+          const res = await enableChatbotPermission(user.uid, record.uid);
+          updatedPermissionUid = res.uid;
         } else {
-          await fetch(`/api/v1/admin/permissions/${record.permission_uid}`, {
-            method: "DELETE",
-            headers: { Authorization: `Bearer ${accessToken}` },
-          });
+          await disableChatbotPermission(record.permission_uid);
         }
 
         setChatbots((prev) =>

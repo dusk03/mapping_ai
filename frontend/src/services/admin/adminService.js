@@ -36,3 +36,20 @@ export const fetchFreeChatbots = async () => {
     const data = await res.json();
     return data.data.models;
 };
+
+export const getChatbotsByUser = async (userUid) => {
+    return apiClient(`/admin/chatbots/${userUid}`);
+};
+
+export const enableChatbotPermission = async (userUid, chatbotUid) => {
+    return apiClient(`/admin/permissions`, {
+        method: "POST",
+        body: JSON.stringify({ user_uid: userUid, chatbot_uid: chatbotUid }),
+    });
+};
+
+export const disableChatbotPermission = async (permissionUid) => {
+    return apiClient(`/admin/permissions/${permissionUid}`, {
+        method: "DELETE",
+    });
+};

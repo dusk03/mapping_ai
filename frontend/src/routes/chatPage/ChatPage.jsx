@@ -46,9 +46,11 @@ const ChatPage = () => {
           setChatFile(data.chatbot.chat_with_file);
         }
       } catch (error) {
-        if (error) {
+        if (error?.detail === "conversation not found") {
           message.error("Conversation not found. Redirecting to Dashboard...");
           navigate("/dashboard");
+        } else {
+          message.error("This chatbot instance has been deleted.");
         }
       } finally {
         setHistoryFetched(true);
