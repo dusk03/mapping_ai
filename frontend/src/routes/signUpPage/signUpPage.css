@@ -1,0 +1,24 @@
+.sign-up-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+}
+
+.sign-up-wrapper {
+    width: 400px;
+    background: #fff;
+    padding: 12px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.sign-up-title {
+    margin-top: 10px;
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+.full-width-input {
+    width: 100%;
+}

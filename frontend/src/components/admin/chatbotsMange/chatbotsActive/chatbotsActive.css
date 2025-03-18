@@ -1,0 +1,59 @@
+.chatbots-content {
+    height: 80%;
+}
+
+.chatbots-container {
+    padding: 20px;
+    background-color: #f9f9f9;
+    align-items: center;
+    width: 100%;
+
+    border-radius: 8px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.ant-table {
+    background-color: white;
+    border-radius: 8px;
+}
+
+.ant-typography {
+    margin-bottom: 20px;
+}
+
+.ant-table-thead>tr>th,
+.ant-table-tbody>tr>td {
+    white-space: normal;
+    word-break: break-word;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.delete-btn {
+    background-color: #ff4d4f;
+    color: red;
+
+    border-radius: 5px;
+    padding: 5px 12px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: background 0.2s, transform 0.1s;
+}
+
+.delete-btn:hover {
+    background-color: yellow;
+}
+
+.delete-btn:active {
+    background-color: yellow;
+}
+
+.button-refresh {
+    background-color: #1890ff;
+    color: white;
+    border: none;
+}
+
+.button-refresh:hover {
+    background-color: #40a9ff;
+}

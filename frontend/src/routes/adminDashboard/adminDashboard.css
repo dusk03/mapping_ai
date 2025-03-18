@@ -1,0 +1,40 @@
+.admin-layout {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.admin-sidebar {
+    width: 250px;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.admin-layout>.ant-layout {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.admin-header {
+    height: 64px;
+    background: white;
+    color: #001529;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.admin-content {
+    flex: 1;
+    display: flex;
+
+}
+
+.logout-btn {
+    margin-right: 30px;
+}

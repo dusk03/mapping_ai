@@ -1,0 +1,69 @@
+.document-manager {
+    position: absolute;
+    display: flex;
+    left: 20px;
+    z-index: 1000;
+    margin-right: 50px;
+}
+
+.document-panel {
+    position: absolute;
+    top: 40px;
+    left: 10px;
+    width: 280px;
+    background: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    padding: 16px;
+    z-index: 1000;
+    border: 1px solid #ddd;
+}
+
+.document-panel h3 {
+    margin-bottom: 12px;
+}
+
+.document-button {
+    background-color: #25abc0;
+    border: none;
+    color: white;
+    font-weight: bold;
+    border-radius: 8px;
+    padding: 10px 20px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(37, 171, 192, 0.3);
+}
+
+.document-button:hover {
+    background-color: #e66a00;
+    border-color: #e66a00;
+    box-shadow: 0 6px 14px rgba(230, 106, 0, 0.4);
+}
+
+.document-button:active {
+    background-color: #cc5b00;
+    border-color: #cc5b00;
+    box-shadow: 0 3px 8px rgba(204, 91, 0, 0.3);
+}
+
+.drag-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    z-index: 999;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.drop-instruction {
+    margin-top: 100px;
+}

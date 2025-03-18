@@ -1,0 +1,43 @@
+.chat-page {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    height: 100%;
+    position: relative;
+}
+
+.chat-header {
+    display: flex;
+    position: relative;
+    align-items: center;
+}
+
+.chat-title {
+    margin-left: 30px;
+    flex-grow: 1;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.chat-container {
+    position: relative;
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.chat-messages-container {
+    flex: 1;
+    overflow-y: auto;
+    padding-bottom: 60px;
+}
+
+
+.chat-input-container {
+    position: sticky;
+    z-index: 100;
+    bottom: 0;
+    left: 0;
+}

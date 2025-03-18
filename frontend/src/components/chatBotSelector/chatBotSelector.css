@@ -1,0 +1,38 @@
+button .ant-btn {
+    border: solid;
+}
+
+.ant-btn {
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.ant-dropdown-menu {
+    min-width: auto !important;
+    width: fit-content !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    padding: 4px 0;
+}
+
+.ant-dropdown-menu-item {
+    padding: 10px 16px;
+    transition: background 0.3s ease;
+    white-space: nowrap;
+}
+
+.ant-dropdown-menu-item a {
+    color: #333;
+    font-weight: 500;
+}
+
+.ant-dropdown-menu-item:hover {
+    background: #e6f7ff;
+}
+
+.ant-dropdown-menu-divider {
+    margin: 6px 0;
+}
+
+.ant-space-item {
+    font-size: 20px;
+}
