@@ -24,7 +24,7 @@ const ChatbotsActive = () => {
   const [deletingUid, setDeletingUid] = useState(null);
 
   const handleDelete = (uid) => {
-    setDeletingUid(uid); // Đánh dấu chatbot đang xóa
+    setDeletingUid(uid);
     mutation.mutate(uid, {
       onSuccess: () => {
         message.success("Chatbot deleted successfully!");
@@ -33,7 +33,7 @@ const ChatbotsActive = () => {
         );
       },
       onError: () => message.error("Failed to delete chatbot!"),
-      onSettled: () => setDeletingUid(null), // Reset trạng thái sau khi xong
+      onSettled: () => setDeletingUid(null),
     });
   };
 
@@ -47,12 +47,10 @@ const ChatbotsActive = () => {
   const mutation = useMutation({
     mutationFn: deleteChatbot,
     onSuccess: (_, uid) => {
-      message.success("Chatbot deleted successfully!");
       queryClient.setQueryData(["chatbots"], (oldData) =>
         oldData?.filter((item) => item.uid !== uid)
       );
     },
-    onError: () => message.error("Failed to delete chatbot!"),
   });
 
   const handleRefresh = () =>

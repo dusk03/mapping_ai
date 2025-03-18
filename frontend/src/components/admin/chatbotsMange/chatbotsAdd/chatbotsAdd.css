@@ -20,11 +20,8 @@
 .ant-table-thead>tr>th,
 .ant-table-tbody>tr>td {
     white-space: normal;
-    /* Cho phép xuống dòng */
     word-break: break-word;
-    /* Ngắt từ nếu quá dài */
     text-overflow: ellipsis;
-    /* Nếu nội dung dài, hiển thị dấu "..." */
     overflow: hidden;
 }
 

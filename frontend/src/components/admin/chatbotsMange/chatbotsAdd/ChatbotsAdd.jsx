@@ -24,18 +24,17 @@ const ChatbotsAdd = () => {
   const queryClient = useQueryClient();
   const [searchText, setSearchText] = useState("");
 
-  // Thêm state riêng để theo dõi chatbot đang được thêm
   const [addingSlug, setAddingSlug] = useState(null);
 
   const handleAddChatbot = (chatbot) => {
-    setAddingSlug(chatbot.slug); // đánh dấu chatbot đang xử lý
+    setAddingSlug(chatbot.slug);
     mutation.mutate(chatbot, {
       onSuccess: (_, newChatbot) => {
         message.success(`Added chatbot: ${newChatbot.short_name}`);
         queryClient.invalidateQueries({ queryKey: ["existingChatbots"] });
       },
       onError: () => message.error("Failed to add chatbot"),
-      onSettled: () => setAddingSlug(null), // reset lại sau khi xong
+      onSettled: () => setAddingSlug(null),
     });
   };
 
@@ -65,10 +64,8 @@ const ChatbotsAdd = () => {
   const mutation = useMutation({
     mutationFn: addChatbot,
     onSuccess: (_, newChatbot) => {
-      message.success(`Added chatbot: ${newChatbot.short_name}`);
       queryClient.invalidateQueries({ queryKey: ["existingChatbots"] });
     },
-    onError: () => message.error("Failed to add chatbot"),
   });
 
   const handleRefresh = () => {
